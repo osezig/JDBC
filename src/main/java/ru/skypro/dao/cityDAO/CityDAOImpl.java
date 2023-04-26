@@ -1,6 +1,5 @@
 package ru.skypro.dao.cityDAO;
 
-import ru.skypro.connection.ApplicationConnection;
 import ru.skypro.models.City;
 
 import java.sql.PreparedStatement;

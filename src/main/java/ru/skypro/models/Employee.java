@@ -1,20 +1,33 @@
 package ru.skypro.models;
-
+import javax.persistence.*;
 import java.util.Objects;
-
+@Entity
+@Table(name="employee")
 public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
+    @Column(name = "gender")
     private String gender;
+    @Column(name = "age")
     private Integer age;
-    private City cityId;
+    @Column(name = "city_id")
+    private int cityId;
 
-    public Employee(String firstName, String lastName, String gender, Integer age, City cityId) {
+    public Employee(String firstName, String lastName, String gender, Integer age, int cityId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.age = age;
         this.cityId = cityId;
+    }
+
+    public Employee() {
     }
 
     @Override
@@ -32,7 +45,14 @@ public class Employee {
 
     @Override
     public String toString() {
-        return firstName + " " + lastName + " " + age + " " + gender + " " + cityId;
+        return id + firstName + " " + lastName + " " + age + " " + gender + " " + cityId;
+    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -67,11 +87,11 @@ public class Employee {
         this.gender = gender;
     }
 
-    public City getCityId() {
+    public int getCityId() {
         return cityId;
     }
 
-    public void setCityId(City cityId) {
+    public void setCityId(int cityId) {
         this.cityId = cityId;
     }
 }
